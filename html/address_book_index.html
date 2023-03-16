@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="../css/person.css" >
     <title>Person Address Book </title>
     <style>
-        .flexo{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            position: -webkit-sticky;
-  position: sticky;
-  align-self: flex-start;
-            padding-top: 30px;
-            padding-left: 30px;
-        }
-    
     </style>
 </head>
 <body>
@@ -29,24 +18,23 @@
             <span class="emp-text emp-payroll">BOOK</span>
             </div>
         </div>
-        </header>
-        <br><br>
+    </header>
+    <br><br>
 
-        <div id="formId" >
-            <form class="form" action="#" onreset="resetForm()" onsubmit="save(event)">
-            <div class="form-head">
-                <span class="emp-detail-text">Person Address form</span> <span><a class="add-button" href="../html/addressBook_record.html" ><img  style="align-self: right;" class="image" class="add-button"  src="../assets/cross.PNG" ></a></span>
-            </div>
-
-            <div class="main row-content1">
-                <input class="sinput1" type="text" id="name" name="name"  required>
-                <error-output class="name-error" for="name"></error-output>
-                <div class="sub">Full Name</div>
-            </div>
+    <div>
+        <form class="form" action="#" onreset="resetForm()" onsubmit="save(event)">
+        <div class="form-head">
+            <span class="emp-detail-text">Person Address form</span> <span><a class="add-button" href="../html/addressBook_record.html" ><img  style="align-self: right;" class="image" class="add-button"  src="../assets/cross.PNG" ></a></span>
+        </div>
+        <div class="main row-content1">
+            <input class="focus sinput1" type="text" id="name" name="name"  required>
+            <error-output class="name-error" for="name"></error-output>
+            <div class="sub">Full Name</div>
+        </div>
         
 
             <div class="row-content marginTop">
-                <textarea id="address" class="address_input" name="address" placeholder="Address" style="height:100px"></textarea>
+                <textarea id="address" class="focus address_input" name="address" placeholder="Address" style="height:100px"></textarea>
                 <error-output class="address-error" for="address"></error-output>
             </div>
 
@@ -59,7 +47,7 @@
             <div class="flexo">
                 <label class="label text" name ="startDate" for="startDate"></label>
                 <div >
-                    <select class="color" id="stateSelect" size="1" onchange="makeSubmenu(this.value)">
+                    <select class="focus" id="stateSelect" size="1" onchange="makeSubmenu(this.value)">
                         <option value="" id="state" disabled selected>Select State</option>
                         <option value="Andra Pradesh">Andra Pradesh</option>
                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -121,18 +109,9 @@
 
 
             <div class="box">
-                <div class="box2"><button type="submit" class="submitButton button " id="submit">Add</button></div>
+                <div class="box2"><button type="submit" class="submitButton button" id="submit">Add</button></div>
                 <div><button type="reset" id="reset" class="submitButton button" >Reset</button></div>
             </div>
-
-        
-
-            <!-- <div class="buttonParent">
-                <div class="right">
-                    <button type="submit" class="submitButton button " id="submit">Add</button>
-                    <button type="reset" id="reset" class="submitButton button" >Reset</button>
-                </div>
-            </div> -->
             </form>
             </div>
 

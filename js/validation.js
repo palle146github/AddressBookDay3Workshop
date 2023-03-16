@@ -1,5 +1,5 @@
 let isUpdate = false;
-let employeePayrollObj = {};
+let addressBookObj = {};
 window.addEventListener('DOMContentLoaded', (event) =>{
     const name = document.querySelector("#name");
     const textError = document.querySelector(".name-error");
@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', (event) =>{
 
         }
 });
-
 
 const address = document.querySelector("#address");
     const addressError = document.querySelector(".address-error");
@@ -74,7 +73,7 @@ const save = (event) =>{
     event.preventDefault();
     event.stopPropagation();
     try{
-        setEmployeePayrollObject();
+        setAddressBookSystemObj();
         createAndUpdateStorage();
         resetForm();
         window.location.replace("../html/addressBook_record.html");
@@ -87,20 +86,20 @@ const save = (event) =>{
     }   
 }
 
-const setEmployeePayrollObject = () =>{
-    employeePayrollObj._name = getInputValueById("#name");
-    employeePayrollObj._address = getInputValueById('#address');
-    employeePayrollObj._stateSelect = getInputValueById('#stateSelect');
-    employeePayrollObj._citySelect = getInputValueById('#citySelect');
-    employeePayrollObj._zip= getInputValueById('#zip');
-    employeePayrollObj._phone = getInputValueById('#phone');
+const setAddressBookSystemObj = () =>{
+    addressBookObj._name = getInputValueById("#name");
+    addressBookObj._address = getInputValueById('#address');
+    addressBookObj._stateSelect = getInputValueById('#stateSelect');
+    addressBookObj._citySelect = getInputValueById('#citySelect');
+    addressBookObj._zip= getInputValueById('#zip');
+    addressBookObj._phone = getInputValueById('#phone');
 }
 
 const  createAndUpdateStorage = () =>{
     let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
 
     if(addressBookList){
-        let addressBookData = addressBookList.find(empData => empData._id == employeePayrollObj._id);
+        let addressBookData = addressBookList.find(empData => empData._id == addressBookObj._id);
         if(!addressBookData){
             addressBookList.push(createAddressBookData());
         }else{
@@ -125,16 +124,16 @@ const createAddressBookData = (id) => {
 
 const setAddressBookData = (addressBookData) => {
     try{
-        addressBookData.name = employeePayrollObj._name;
+        addressBookData.name = addressBookObj._name;
     }catch(e){
         setTextValue('.text-error',e);
         throw e;
     }
-    addressBookData.address = employeePayrollObj._address;
-    addressBookData.stateSelect = employeePayrollObj._stateSelect;
-    addressBookData.citySelect = employeePayrollObj._citySelect;
-    addressBookData.zip = employeePayrollObj._zip;
-    addressBookData.phone = employeePayrollObj._phone;   
+    addressBookData.address = addressBookObj._address;
+    addressBookData.stateSelect = addressBookObj._stateSelect;
+    addressBookData.citySelect = addressBookObj._citySelect;
+    addressBookData.zip = addressBookObj._zip;
+    addressBookData.phone = addressBookObj._phone;   
     alert(addressBookData.toString());
 }
 const setTextValue = (id, value) =>{
@@ -211,18 +210,18 @@ const checkForUpdate = () =>{
     const addressBookJson = localStorage.getItem("editAdb");
     isUpdate = addressBookJson ? true : false;
     if(!isUpdate) return;
-    employeePayrollObj = JSON.parse(addressBookJson);
+    addressBookObj = JSON.parse(addressBookJson);
     setForm();
 }
 
 const setForm = () => {
-    setValue('#name', employeePayrollObj._name);
-    setValue('#address', employeePayrollObj._address);
-    setValue('#stateSelect', employeePayrollObj._stateSelect);
-    setValue('#citySelect', employeePayrollObj._citySelect);
-    setValue('#zip', employeePayrollObj._zip);
-    setValue('#phone', employeePayrollObj._phone);
-    setCity(employeePayrollObj._stateSelect,"#citySelect",employeePayrollObj._citySelect);
+    setValue('#name', addressBookObj._name);
+    setValue('#address', addressBookObj._address);
+    setValue('#stateSelect', addressBookObj._stateSelect);
+    setValue('#citySelect', addressBookObj._citySelect);
+    setValue('#zip', addressBookObj._zip);
+    setValue('#phone', addressBookObj._phone);
+    setCity(addressBookObj._stateSelect,"#citySelect",addressBookObj._citySelect);
 }
 
 const setCity = (stateValue, selector, value) => {
